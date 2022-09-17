@@ -2,7 +2,6 @@ import path from 'path';
 import { splitVendorChunkPlugin  } from 'vite'
 import { defineConfig  } from "vitest/config";
 import { createVuePlugin  } from 'vite-plugin-vue2'
-import gzipPlugin from 'rollup-plugin-gzip'
 
 export default defineConfig({
   plugins: [
@@ -22,9 +21,6 @@ export default defineConfig({
     outDir: path.resolve(__dirname, 'lib'),
     rollupOptions: {
       external: ['vue'],
-      plugins: [
-        gzipPlugin()
-      ],
       output: {
         globals: {
           vue: 'Vue'

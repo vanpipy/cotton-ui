@@ -1,15 +1,15 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
-import CottonTable from './index.vue';
+import CottonFilter from './index.vue';
 
-describe('CottonTable', () => {
+describe('CottonFilter', () => {
   it('should render with columns', () => {
     const columns = [
       { label: 'A0', key: 'a' },
       { label: 'B0', key: 'b' },
       { label: 'C0', key: 'c' },
     ];
-    const wrapper = mount(CottonTable, {
+    const wrapper = mount(CottonFilter, {
       propsData: {
         columns
       }
