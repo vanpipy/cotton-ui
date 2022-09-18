@@ -104,10 +104,6 @@
         return { ...this.values }
       },
 
-      changeValue: function(key: string, value: string) {
-        this.values[key] = value
-      },
-
       reset: function() {
         this.$refs.localForm.resetFields()
       }
