@@ -57,11 +57,7 @@
       class="filter-combox__operation"
       style="text-align: right"
     >
-      <slot
-        name="operation"
-        :values="values"
-        :reset="reset"
-      />
+      <slot name="operation" />
     </div>
   </div>
 </template>
