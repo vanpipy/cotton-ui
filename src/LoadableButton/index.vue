@@ -49,7 +49,8 @@
     },
 
     mounted: function() {
-      if (this.delay > 0) {
+      if (this.delayToTrigger > 0) {
+        this.delay = this.delayToTrigger
         this.countdown();
       }
     },
