@@ -17,7 +17,7 @@
     "test:coverage": "vitest run --coverage",
     "test": "vitest",
     "build": "vite build",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+    "version": "auto-changelog -p --template keepachangelog && git add CHANGELOG.md"
   },
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
     "@typescript-eslint/parser": "^5.37.0",
     "@vitest/coverage-c8": "^0.23.2",
     "@vue/test-utils": "^1.3.0",
-    "conventional-changelog-cli": "^2.2.2",
+    "auto-changelog": "^2.4.0",
     "eslint": "^8.23.1",
     "eslint-plugin-vue": "^9.4.0",
     "husky": "^4.3.8",
