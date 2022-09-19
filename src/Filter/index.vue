@@ -104,8 +104,8 @@
         return { ...this.values }
       },
 
-      reset: function() {
-        this.values = []
+      reset: async function() {
+        this.values = {}
       }
     }
   }
