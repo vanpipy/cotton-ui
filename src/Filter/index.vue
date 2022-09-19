@@ -105,7 +105,7 @@
       },
 
       reset: function() {
-        this.$refs.localForm.resetFields()
+        this.values = []
       }
     }
   }
