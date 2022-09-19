@@ -1,8 +1,9 @@
-## [0.0.4](http://10.106.1.10:8002/fanjg/cotton/compare/v0.0.1...v0.0.4) (2022-09-19)
+## [0.0.5](http://10.106.1.10:8002/fanjg/cotton/compare/v0.0.1...v0.0.5) (2022-09-19)
 
 
 ### Bug Fixes
 
+* **CottonFilter:** correct the reset value to {} ([52b0ac9](http://10.106.1.10:8002/fanjg/cotton/commits/52b0ac99326d0953e29da09136765c2e41a3f59e))
 * **CottonFilter:** remove changeValue function ([4e26a62](http://10.106.1.10:8002/fanjg/cotton/commits/4e26a6245f095fd4f839a272647e9da1958f2577))
 * **CottonFilter:** remove the slot parameters ([b47ebed](http://10.106.1.10:8002/fanjg/cotton/commits/b47ebed292219572184a055b5042b57f0ace97fc))
 * **CottonFilter:** reset the values only avoid the form freezed ([72454ce](http://10.106.1.10:8002/fanjg/cotton/commits/72454ce73b242a05026280ff0e78b74a64060b56))
