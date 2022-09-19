@@ -1,4 +1,4 @@
-## [0.0.5](http://10.106.1.10:8002/fanjg/cotton/compare/v0.0.1...v0.0.5) (2022-09-19)
+## [0.0.6](http://10.106.1.10:8002/fanjg/cotton/compare/v0.0.1...v0.0.6) (2022-09-19)
 
 
 ### Bug Fixes
@@ -15,6 +15,7 @@
 * add CottonFilter ([a88393c](http://10.106.1.10:8002/fanjg/cotton/commits/a88393ca91fd468225cade12aac80154e039781d))
 * add initial tools ([d4d47fd](http://10.106.1.10:8002/fanjg/cotton/commits/d4d47fdb05733e4a6130701d803e4343d76d388a))
 * add LoadableButton ([3a57206](http://10.106.1.10:8002/fanjg/cotton/commits/3a57206e8ab51923e7ac697a0ccf6dc3faa93e8e))
+* move the name to `cotton-ui` ([14c4f42](http://10.106.1.10:8002/fanjg/cotton/commits/14c4f420e210e806a7d6d3b08ca39fa2162456a2))
 
 
 
