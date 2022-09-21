@@ -11,10 +11,7 @@
 
 <script lang="ts">
   import { Button as ElementButton } from 'element-ui';
-
-  const wait = (delay?: number) => new Promise(resolve => {
-    setTimeout(resolve, delay || 300);
-  });
+  import { wait } from '../utils';
 
   const asyncNoop = async () => {
     return undefined
@@ -69,7 +66,8 @@
           const onClickEvent: typeof asyncNoop = this.onClick || asyncNoop;
           await onClickEvent.apply(null, args as []);
           this.loading = false;
-        } catch (_) {
+        } catch (err) {
+          console.warn(err);
           this.loading = false;
         }
       },
