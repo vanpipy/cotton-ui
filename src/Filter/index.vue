@@ -6,7 +6,7 @@
         :model="values"
         label-width="80px"
         class="filter-combox__form-box"
-        style="display: flex; flex-wrap: wrap; justify-content: space-between;"
+        style="display: flex; flex-wrap: wrap; justify-content: space-between"
       >
         <FormItem
           v-for="(column, i) in columns"
@@ -14,7 +14,7 @@
           :label="column.label"
           :prop="column.key"
           class="filter-combox__form-item"
-          style="width: 320px;"
+          style="width: 320px"
         >
           <ElementInput
             v-if="column.type === 'input'"
@@ -53,60 +53,57 @@
         <div style="width: 320px; margin: 0, padding: 0" />
       </ElementForm>
     </div>
-    <div
-      class="filter-combox__operation"
-      style="text-align: right"
-    >
+    <div class="filter-combox__operation" style="text-align: right">
       <slot name="operation" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  import { Input, Select, Option, DatePicker, Form, FormItem } from 'element-ui'
+import { Input, Select, Option, DatePicker, Form, FormItem } from 'element-ui';
 
-  export type Field = {
-    label: string;
-    key: string;
-    type: string,
-    placeholder?: string;
-  }
+export type Field = {
+  label: string;
+  key: string;
+  type: string;
+  placeholder?: string;
+};
 
-  export default {
-    name: 'CottonFilter',
+export default {
+  name: 'CottonFilter',
 
-    components: {
-      ElementInput: Input,
-      ElementSelect: Select,
-      ElementOption: Option,
-      DatePicker,
-      ElementForm: Form,
-      FormItem
-    },
+  components: {
+    ElementInput: Input,
+    ElementSelect: Select,
+    ElementOption: Option,
+    DatePicker,
+    ElementForm: Form,
+    FormItem,
+  },
 
-    props: {
-      columns: {
-        type: Array<Field>,
-        default() {
-          return []
-        }
-      }
-    },
-
-    data: function() {
-      return {
-        values: {}
-      }
-    },
-
-    methods: {
-      getValues: function() {
-        return { ...this.values }
+  props: {
+    columns: {
+      type: Array<Field>,
+      default() {
+        return [];
       },
+    },
+  },
 
-      reset: async function() {
-        this.values = {}
-      }
-    }
-  }
+  data: function () {
+    return {
+      values: {},
+    };
+  },
+
+  methods: {
+    getValues: function () {
+      return { ...this.values };
+    },
+
+    reset: async function () {
+      this.values = {};
+    },
+  },
+};
 </script>

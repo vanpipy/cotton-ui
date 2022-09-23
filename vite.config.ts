@@ -1,13 +1,10 @@
 import path from 'path';
-import { splitVendorChunkPlugin  } from 'vite'
-import { defineConfig  } from "vitest/config";
-import { createVuePlugin  } from 'vite-plugin-vue2'
+import { splitVendorChunkPlugin } from 'vite';
+import { defineConfig } from 'vitest/config';
+import { createVuePlugin } from 'vite-plugin-vue2';
 
 export default defineConfig({
-  plugins: [
-    createVuePlugin(),
-    splitVendorChunkPlugin()
-  ],
+  plugins: [createVuePlugin(), splitVendorChunkPlugin()],
 
   build: {
     sourcemap: true,
@@ -16,22 +13,22 @@ export default defineConfig({
       entry: path.resolve(__dirname, 'src/index.ts'),
       formats: ['es', 'cjs'],
       name: 'Cotton',
-      fileName: 'cotton'
+      fileName: 'cotton',
     },
     outDir: path.resolve(__dirname, 'lib'),
     rollupOptions: {
       external: ['vue'],
       output: {
         globals: {
-          vue: 'Vue'
+          vue: 'Vue',
         },
-      }
-    }
+      },
+    },
   },
 
   test: {
     root: '.',
     environment: 'jsdom',
-    include: ['./src/**/*.spec.ts']
-  }
-})
+    include: ['./src/**/*.spec.ts'],
+  },
+});

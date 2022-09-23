@@ -7,11 +7,11 @@ export type confirmProps = {
   confirmButtonText?: string;
   cancelButtonText?: string;
   closeOnClickModal?: boolean;
-}
+};
 
 export type confirmCallback = {
   onConfirm?: () => Promise<void>;
-}
+};
 
 export const createConfirm = (params: confirmProps) => {
   const {
@@ -23,33 +23,36 @@ export const createConfirm = (params: confirmProps) => {
     closeOnClickModal = false,
   } = params;
 
-  return (callback?: confirmCallback) => new Promise<void>((resolve, reject) => {
-    const { onConfirm = async () => {} } = callback as confirmCallback || {};
+  return (callback?: confirmCallback) =>
+    new Promise<void>((resolve, reject) => {
+      const { onConfirm = async () => {} } = (callback as confirmCallback) || {};
 
-    MessageBox.confirm(content, title, {
-      type,
-      confirmButtonText,
-      cancelButtonText,
-      closeOnClickModal,
-      beforeClose: async (action, instance, done) => {
-        if (action === 'confirm') {
-          instance.confirmButtonLoading = true
+      MessageBox.confirm(content, title, {
+        type,
+        confirmButtonText,
+        cancelButtonText,
+        closeOnClickModal,
+        beforeClose: async (action, instance, done) => {
+          if (action === 'confirm') {
+            instance.confirmButtonLoading = true;
 
-          try {
-            await onConfirm()
-          } catch (err) {
-            Message.error(err as string)
+            try {
+              await onConfirm();
+            } catch (err) {
+              Message.error(err as string);
+            }
+
+            instance.confirmButtonLoading = false;
+          } else {
+            done();
           }
-
-          instance.confirmButtonLoading = false
-        } else {
-          done()
-        }
-      }
-    }).then(() => {
-      resolve()
-    }).catch(() => {
-      reject(Error('canceled'))
-    })
-  })
+        },
+      })
+        .then(() => {
+          resolve();
+        })
+        .catch(() => {
+          reject(Error('canceled'));
+        });
+    });
 };
