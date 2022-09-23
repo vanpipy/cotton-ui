@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest';
-import LoadableButton from './index.vue';
+import LoadableButton from './LoadableButton.vue';
 
 describe('LoadableButton', () => {
   beforeEach(() => {
