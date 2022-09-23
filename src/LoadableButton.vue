@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { Button as ElementButton } from 'element-ui';
-import { wait } from '../utils';
+import { wait } from './utils';
 
 const asyncNoop = async () => {
   return undefined;

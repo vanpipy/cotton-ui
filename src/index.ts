@@ -1,5 +1,7 @@
-import LoadableButton from './LoadableButton/index.vue';
-import CottonFilter from './Filter/index.vue';
+import LoadableButton from './LoadableButton.vue';
+import Filter from './Filter.vue';
 import { createConfirm } from './Confirm';
+import * as CONSTANS from './constant';
 
-export { LoadableButton, CottonFilter, createConfirm };
+export { CONSTANS };
+export { LoadableButton, Filter, createConfirm };
