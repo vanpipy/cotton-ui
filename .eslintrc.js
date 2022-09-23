@@ -2,32 +2,23 @@ module.exports = {
   root: true,
   parser: 'vue-eslint-parser',
   parserOptions: {
-    parser: {
-      // Script parser for `<script lang="ts">`
-      ts: '@typescript-eslint/parser',
-      // Script parser for vue directives (e.g. `v-if=` or `:attribute=`)
-      // and vue interpolations (e.g. `{{variable}}`).
-      // If not specified, the parser determined by `<script lang ="...">` is used
-      '<template>': 'espree'
-    },
+    parser: '@typescript-eslint/parser',
     ecmaVersion: 2015,
     sourceType: 'module',
     ecmaFeatures: {
       globalReturn: false,
       impliedStrict: false,
-      jsx: false
-    }
+      jsx: false,
+    },
   },
   env: {
     browser: true,
-    node: true
+    node: true,
   },
-  plugins: ['@typescript-eslint/eslint-plugin'],
-  extends: [
-    'plugin:vue/recommended',
-    'plugin:@typescript-eslint/recommended'
-  ],
+  extends: ['plugin:vue/strongly-recommended', 'eslint:recommended', '@vue/typescript/recommended', 'prettier'],
+  plugins: ['@typescript-eslint', 'prettier'],
   rules: {
-    '@typescript-eslint/no-empty-function': 'off'
-  }
-};
+    'prettier/prettier': 'error',
+    '@typescript-eslint/no-empty-function': 'off',
+  },
+}
