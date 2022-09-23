@@ -15,9 +15,11 @@
   },
   "scripts": {
     "test:coverage": "vitest run --coverage",
-    "test": "vitest",
+    "test": "vitest --run",
+    "test:watch": "vitest -w",
     "build": "vite build",
-    "version": "auto-changelog -p --template keepachangelog && git add CHANGELOG.md"
+    "version": "auto-changelog -p --template keepachangelog && git add CHANGELOG.md",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -31,12 +33,9 @@
       "eslint --fix"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged --allow-empty"
-    }
-  },
   "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
     "@types/jsdom": "^20.0.0",
     "@types/lodash": "^4.14.185",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
@@ -46,7 +45,7 @@
     "auto-changelog": "^2.4.0",
     "eslint": "^8.23.1",
     "eslint-plugin-vue": "^9.4.0",
-    "husky": "^4.3.8",
+    "husky": "^8.0.1",
     "jsdom": "^20.0.0",
     "lint-staged": "^13.0.3",
     "vite": "^3.1.1",
