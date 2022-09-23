@@ -1,8 +1,10 @@
 {
   "name": "cotton-ui",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "It is cotton.",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "main": "./lib/cotton.js",
   "types": "./lib/cotton.d.ts",
   "module": "./lib/cotton.mjs",
@@ -28,7 +30,9 @@
   "author": "",
   "license": "MIT",
   "lint-staged": {
-    "*.{js,ts,vue}": ["prettier --write"]
+    "*.{js,ts,vue}": [
+      "prettier --write"
+    ]
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
