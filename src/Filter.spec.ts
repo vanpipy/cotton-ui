@@ -1,18 +1,18 @@
 import { mount } from '@vue/test-utils';
 import { DatePicker, Input, Option, Select } from 'element-ui';
 import { describe, it, expect } from 'vitest';
-import CottonFilter from './index.vue';
+import Filter from './Filter.vue';
 
-describe('CottonFilter', () => {
+describe('Filter', () => {
   it('should render the empty columns without exception', () => {
-    const run = () => mount(CottonFilter);
+    const run = () => mount(Filter);
     expect(run).not.toThrow();
   });
 
   it('should render the empty column without exception', () => {
     const columns = [{}, {}, {}, {}, {}];
     const run = () =>
-      mount(CottonFilter, {
+      mount(Filter, {
         propsData: { columns },
       });
     expect(run).not.toThrow();
@@ -24,7 +24,7 @@ describe('CottonFilter', () => {
       { label: 'B', key: 'b' },
       { label: 'C', key: 'c' },
     ];
-    const wrapper = mount(CottonFilter, {
+    const wrapper = mount(Filter, {
       propsData: { columns },
     });
     expect(wrapper.findAll('.filter-combox__form-item')).toHaveLength(3);
@@ -32,7 +32,7 @@ describe('CottonFilter', () => {
 
   it('should render the label in the columns', () => {
     const columns = [{ label: 'expected_column_A' }, { label: 'expected_column_B' }, { label: 'expected_column_C' }];
-    const wrapper = mount(CottonFilter, {
+    const wrapper = mount(Filter, {
       propsData: { columns },
     });
     const html = wrapper.html();
@@ -43,7 +43,7 @@ describe('CottonFilter', () => {
 
   it('should render an input element when the column.type equal `input`', () => {
     const columns = [{ label: 'A', key: 'a', type: 'input' }];
-    const wrapper = mount(CottonFilter, {
+    const wrapper = mount(Filter, {
       propsData: { columns },
     });
     const com = wrapper.findComponent(Input);
@@ -52,7 +52,7 @@ describe('CottonFilter', () => {
 
   it('should render a select element when the column.type equal `select`', () => {
     const columns = [{ label: 'A', key: 'a', type: 'select' }];
-    const wrapper = mount(CottonFilter, {
+    const wrapper = mount(Filter, {
       propsData: { columns },
     });
     const com = wrapper.findComponent(Select);
@@ -71,7 +71,7 @@ describe('CottonFilter', () => {
         ],
       },
     ];
-    const wrapper = mount(CottonFilter, {
+    const wrapper = mount(Filter, {
       propsData: { columns },
     });
     expect(wrapper.findAllComponents(Option)).toHaveLength(2);
@@ -79,7 +79,7 @@ describe('CottonFilter', () => {
 
   it('should render a date picker element when the column.type equal `date`', () => {
     const columns = [{ label: 'A', key: 'a', type: 'date' }];
-    const wrapper = mount(CottonFilter, {
+    const wrapper = mount(Filter, {
       propsData: { columns },
     });
     const com = wrapper.findComponent(DatePicker);
@@ -88,7 +88,7 @@ describe('CottonFilter', () => {
 
   it('should render a date range picker element when the column.type equal `daterange`', () => {
     const columns = [{ label: 'A', key: 'a', type: 'daterange' }];
-    const wrapper = mount(CottonFilter, {
+    const wrapper = mount(Filter, {
       propsData: { columns },
     });
     const com = wrapper.findComponent(DatePicker);
@@ -98,7 +98,7 @@ describe('CottonFilter', () => {
 
   it('should access the form values via `getValues`', () => {
     const columns = [{ label: 'A', key: 'a', type: 'input' }];
-    const wrapper = mount(CottonFilter, {
+    const wrapper = mount(Filter, {
       propsData: { columns },
     });
     const field = wrapper.find('input');
@@ -109,7 +109,7 @@ describe('CottonFilter', () => {
 
   it('should reset the form values via `reset`', () => {
     const columns = [{ label: 'A', key: 'a', type: 'input' }];
-    const wrapper = mount(CottonFilter, {
+    const wrapper = mount(Filter, {
       propsData: { columns },
     });
     const field = wrapper.find('input');
