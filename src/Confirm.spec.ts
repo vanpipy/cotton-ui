@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { createConfirm } from '.';
-import { wait } from '../utils';
+import { createConfirm } from './Confirm';
+import { wait } from './utils';
 
 describe('Confirm', () => {
   beforeEach(() => {
