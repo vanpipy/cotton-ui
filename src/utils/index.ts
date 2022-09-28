@@ -4,3 +4,7 @@ export const wait = (interval = 300) =>
       resolve();
     }, interval);
   });
+
+export const justRetrunValue = async (input: unknown) => {
+  return input;
+};
