@@ -1,3 +1,16 @@
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [0.1.2](http://10.106.1.10:8002/fanjg/cotton/compare/v0.1.0...v0.1.2) (2022-09-28)
+
+
+### Features
+
+* add CottonTable ([d5c11c1](http://10.106.1.10:8002/fanjg/cotton/commit/d5c11c1d171f36973949ebbb8677efc4101d7ac0))
+* **build:** generate d.ts file ([d8f5095](http://10.106.1.10:8002/fanjg/cotton/commit/d8f5095c72d3636e3b51a73af3b6904ffee2ae75))
+* **version:** add standard-version ([8764b7d](http://10.106.1.10:8002/fanjg/cotton/commit/8764b7dd368a10704e79d2d7b4cc31b5c01d11c0))
+
 ## [0.1.1](http://10.106.1.10:8002/fanjg/cotton/compare/v0.1.0...v0.1.1) (2022-09-23)
 
 
@@ -48,6 +61,3 @@ generate the d.ts files. Add test scripts and wait fot the CI.
 * add initial tools ([d4d47fd](http://10.106.1.10:8002/fanjg/cotton/commits/d4d47fdb05733e4a6130701d803e4343d76d388a))
 * add LoadableButton ([3a57206](http://10.106.1.10:8002/fanjg/cotton/commits/3a57206e8ab51923e7ac697a0ccf6dc3faa93e8e))
 * move the name to `cotton-ui` ([14c4f42](http://10.106.1.10:8002/fanjg/cotton/commits/14c4f420e210e806a7d6d3b08ca39fa2162456a2))
-
-
-
