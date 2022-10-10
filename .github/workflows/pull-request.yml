@@ -7,12 +7,12 @@ on:
     branches: [ main ]
 
 jobs:
-  check_version:
-    run-on: ubuntu-22.04
+  test:
+    runs-on: ubuntu-22.04
 
     strategy:
       matrix:
-        node-version: [14, 16]
+        node-version: [16, 17]
 
     steps:
       - uses: actions/checkout@v3
