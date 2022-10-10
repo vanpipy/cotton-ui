@@ -25,7 +25,8 @@
 
 <script lang="ts">
 import { Table, TableColumn, Pagination } from 'element-ui';
-import { omit, noop } from 'lodash';
+import { omit } from 'lodash';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 import { justRetrunValue } from './utils';
 
 const defaultQuery = {
@@ -39,19 +40,15 @@ const defaultPageValue = {
   layout: 'total, prev, pager, next, jumper',
 };
 
+type AnyObject = {
+  [key: string]: unknown;
+};
+
 type Page = {
   current: number;
   size: number;
   total: number;
   layout?: string;
-};
-
-type DataCell = {
-  [key: string]: unknown;
-};
-
-type AnyObject = {
-  [key: string]: unknown;
 };
 
 type Resp = {
@@ -61,81 +58,68 @@ type Resp = {
   records: AnyObject[];
 };
 
-export default {
-  name: 'CottonTable',
-
+@Component({
   components: {
     ElementTable: Table,
     ElementTableColumn: TableColumn,
     Pagination,
   },
+})
+export default class CottonTable extends Vue {
+  @Prop({
+    type: Array,
+    default() {
+      return [];
+    },
+  })
+  readonly columns!: Array<AnyObject>;
 
-  props: {
-    resource: {
-      type: Function,
-      default: noop,
+  @Prop({
+    type: Object,
+    default() {
+      return defaultQuery;
     },
-    formatter: {
-      type: Function,
-      default: justRetrunValue,
-    },
-    columns: {
-      type: Array,
-      default() {
-        return [];
-      },
-    },
-    query: {
-      type: Object,
-      default() {
-        return defaultQuery;
-      },
-    },
-  },
+  })
+  readonly query!: AnyObject;
 
-  data: function (): {
-    localQuery: AnyObject;
-    dataLoading: boolean;
-    data: DataCell[];
-    pagination: Page;
-  } {
-    return {
-      localQuery: { ...defaultQuery },
-      dataLoading: false,
-      data: [],
-      pagination: { ...defaultPageValue },
-    };
-  },
+  @Prop({ type: Function }) readonly resource!: (arg?: unknown) => Promise<Resp> | Resp;
+  @Prop({ type: Function }) readonly formatter!: (arg: Resp) => Promise<Resp> | Resp;
 
-  mounted: function () {
+  localQuery: Partial<Page> & AnyObject = {};
+  dataLoading = false;
+  data: AnyObject[] = [];
+  pagination: Page = { ...defaultPageValue };
+
+  mounted() {
     this.localQuery = { ...this.localQuery, ...this.query };
-    this.pagination.size = this.localQuery.size;
+    this.pagination.size = this.localQuery.size || this.pagination.size;
     this.refresh(this.localQuery);
-  },
+  }
 
-  methods: {
-    request: async function (params = {}): Promise<Resp> {
-      try {
-        this.dataLoading = true;
-        const response = await this.resource(params);
-        const formatted = await this.formatter(response);
-        this.dataLoading = false;
-        return formatted || {};
-      } catch (_) {
-        return {};
-      }
-    },
+  onCurrentPageChange(current: number) {
+    this.refresh({ ...this.localQuery, current });
+  }
 
-    refresh: async function (newQuery = {}, omited = []): Promise<void> {
-      this.localQuery = omit({ ...this.localQuery, ...newQuery }, omited);
-      const { records = [], current = 1, total = 0 } = await this.request(this.localQuery);
-      this.data = records;
-      this.pagination = { ...this.pagination, current, total };
-    },
+  private async request(params = {}): Promise<Resp> {
+    try {
+      this.dataLoading = true;
 
-    onCurrentPageChange: function (current: number) {
-      this.refresh({ ...this.localQuery, current });
-    },
-  },
-};
+      const response = await this.resource(params);
+      const formatter = this.formatter || justRetrunValue;
+      const formatted = await formatter(response);
+
+      this.dataLoading = false;
+      return formatted || ({} as Resp);
+    } catch (_) {
+      return {} as Resp;
+    }
+  }
+
+  public async refresh(newQuery = {}, omited = []): Promise<void> {
+    this.localQuery = omit({ ...this.localQuery, ...newQuery }, omited);
+    const { records = [], current = 1, total = 0 } = await this.request(this.localQuery);
+    this.data = records;
+    this.pagination = { ...this.pagination, current, total };
+  }
+}
 </script>
