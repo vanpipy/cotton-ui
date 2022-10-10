@@ -61,6 +61,7 @@
 
 <script lang="ts">
 import { Input, Select, Option, DatePicker, Form, FormItem } from 'element-ui';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
 export type Field = {
   label: string;
@@ -69,9 +70,7 @@ export type Field = {
   placeholder?: string;
 };
 
-export default {
-  name: 'CottonFilter',
-
+@Component({
   components: {
     ElementInput: Input,
     ElementSelect: Select,
@@ -80,30 +79,23 @@ export default {
     ElementForm: Form,
     FormItem,
   },
-
-  props: {
-    columns: {
-      type: Array<Field>,
-      default() {
-        return [];
-      },
+})
+export default class CottonFilter extends Vue {
+  @Prop({
+    default() {
+      return [];
     },
-  },
+  })
+  readonly columns!: Array<Field>;
 
-  data: function () {
-    return {
-      values: {},
-    };
-  },
+  values = {};
 
-  methods: {
-    getValues: function () {
-      return { ...this.values };
-    },
+  getValues() {
+    return { ...this.values };
+  }
 
-    reset: async function () {
-      this.values = {};
-    },
-  },
-};
+  reset() {
+    this.values = {};
+  }
+}
 </script>
