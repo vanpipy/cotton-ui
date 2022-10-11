@@ -128,3 +128,6 @@ dist
 .yarn
 .yarnrc.yml
 .pnp.*
+
+# local resource
+lib
