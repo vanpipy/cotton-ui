@@ -1,5 +1,6 @@
 <template>
   <ElementButton v-bind="$attrs" :loading="loading" @click="onTriggerClick">
+    <!-- @slot Custon button text -->
     <slot />
     <span v-if="delay > 0">({{ delay }})</span>
   </ElementButton>
@@ -19,16 +20,28 @@ const asyncNoop = async (args?: unknown) => {
     ElementButton,
   },
 })
+/**
+ * @displayName LoadableButton
+ */
 export default class LoadableButton extends Vue {
+  /**
+   * The interval before the onClick triggered
+   */
   @Prop({ type: Number, default: 300 }) readonly interval!: number;
+  /**
+   * A visible delay countdown and auto-click the button in the end
+   */
   @Prop({ type: Number, default: 0 }) readonly delayToTrigger!: number;
+  /**
+   * The function used after click the button
+   */
   @Prop({
     type: Function,
     default() {
       return asyncNoop;
     },
   })
-  readonly onClick!: typeof asyncNoop;
+  readonly onClick!: (args?: unknown) => Promise<unknown> | unknown;
 
   loading = false;
   delay = 0;
@@ -45,14 +58,14 @@ export default class LoadableButton extends Vue {
     clearTimeout(this.timer as number);
   }
 
-  async onTriggerClick(...args: unknown[]) {
+  private async onTriggerClick(...args: unknown[]) {
     console.log();
     this.loading = true;
 
     await wait(this.interval);
 
     try {
-      const onClickEvent: typeof asyncNoop = this.onClick || asyncNoop;
+      const onClickEvent = this.onClick || asyncNoop;
       await onClickEvent(...args);
       this.loading = false;
     } catch (err) {
@@ -61,7 +74,7 @@ export default class LoadableButton extends Vue {
     }
   }
 
-  countdown() {
+  private countdown() {
     if (this.delay > 0) {
       this.timer = setTimeout(() => {
         this.delay -= 1;
