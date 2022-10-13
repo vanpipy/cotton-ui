@@ -59,7 +59,6 @@ export default class LoadableButton extends Vue {
   }
 
   private async onTriggerClick(...args: unknown[]) {
-    console.log();
     this.loading = true;
 
     await wait(this.interval);
@@ -69,7 +68,7 @@ export default class LoadableButton extends Vue {
       await onClickEvent(...args);
       this.loading = false;
     } catch (err) {
-      console.warn(err);
+      console.error(err);
       this.loading = false;
     }
   }
