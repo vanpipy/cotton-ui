@@ -3,6 +3,7 @@
     <ElementTable class="cotton-table__instance" :data="data" style="width: 100%">
       <ElementTableColumn v-for="column in columns" :key="column.key" v-bind="column">
         <template slot-scope="scope">
+          <!-- @slot the `column.key` slot when the `column.template` equals true -->
           <slot v-if="column.template" :name="column.key" :scope="scope" />
           <span v-if="!column.template">
             {{ column.type === 'index' ? scope.$index + 1 : null }}
@@ -66,6 +67,9 @@ type Resp = {
   },
 })
 export default class CottonTable extends Vue {
+  /**
+   * The config describe the table columns - Array<{ label: string; key: string; template?: boolean; ... }>
+   */
   @Prop({
     type: Array,
     default() {
@@ -74,6 +78,9 @@ export default class CottonTable extends Vue {
   })
   readonly columns!: Array<AnyObject>;
 
+  /**
+   * A default query when use the resource
+   */
   @Prop({
     type: Object,
     default() {
@@ -82,7 +89,14 @@ export default class CottonTable extends Vue {
   })
   readonly query!: AnyObject;
 
+  /**
+   * The data request function
+   */
   @Prop({ type: Function }) readonly resource!: (arg?: unknown) => Promise<Resp> | Resp;
+
+  /**
+   * Format the response when requested via the resource
+   */
   @Prop({ type: Function }) readonly formatter!: (arg: Resp) => Promise<Resp> | Resp;
 
   localQuery: Partial<Page> & AnyObject = {};
@@ -115,6 +129,13 @@ export default class CottonTable extends Vue {
     }
   }
 
+  /**
+   * Refresh table data
+   *
+   * @param {AnyObject} newQuery
+   * @param {Array<string>} omited
+   * @public
+   */
   public async refresh(newQuery = {}, omited = []): Promise<void> {
     this.localQuery = omit({ ...this.localQuery, ...newQuery }, omited);
     const { records = [], current = 1, total = 0 } = await this.request(this.localQuery);
