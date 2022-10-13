@@ -1,6 +1,21 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+### [0.1.3](https://github.com/vanpipy/cotton-ui/compare/v0.1.2...v0.1.3) (2022-10-13)
+
+
+### Features
+
+* migrate to vue class component ([#2](https://github.com/vanpipy/cotton-ui/issues/2)) ([61c9da0](https://github.com/vanpipy/cotton-ui/commit/61c9da06e709b34ccc3edf3cbe0189596b44fbc6))
+
+
+### Bug Fixes
+
+* remove useless code ([#6](https://github.com/vanpipy/cotton-ui/issues/6)) ([014bdc6](https://github.com/vanpipy/cotton-ui/commit/014bdc66a0e90963fc1c98ee1bbe2f3792c2dc39))
+* **github-workflow:** correct the runs-on ([#4](https://github.com/vanpipy/cotton-ui/issues/4)) ([9b0278e](https://github.com/vanpipy/cotton-ui/commit/9b0278e2e06ff7989615968ed4da9be6701e4add))
+* **github-workflows:** mv workflow to workflows ([e677c97](https://github.com/vanpipy/cotton-ui/commit/e677c97104323ec989a3fe3441dbb0daff07b3de))
+* **package.json:** remove auto-changelog ([330add6](https://github.com/vanpipy/cotton-ui/commit/330add69d7e66971acb7ded51bd5d489d83d637c))
 
 ### [0.1.2](http://10.106.1.10:8002/fanjg/cotton/compare/v0.1.0...v0.1.2) (2022-09-28)
 
