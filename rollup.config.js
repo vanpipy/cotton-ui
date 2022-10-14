@@ -21,25 +21,35 @@ const collectComponents = () => {
   return components;
 };
 
-module.exports = {
-  input: {
-    cotton: path.resolve(__dirname, 'src/index.ts'),
-    Confirm: path.resolve(__dirname, 'src/Confirm.ts'),
-    ...collectComponents(),
-  },
+const createBuildConfig = (input, format = 'es', dir) => {
+  return {
+    input,
 
-  output: {
-    dir: path.resolve(__dirname, 'lib'),
-    format: 'es',
-    sourcemap: true,
-  },
+    output: {
+      dir,
+      format,
+      sourcemap: true,
+    },
 
-  plugins: [
-    vue(),
-    typescript({
-      clean: true,
-    }),
-  ],
+    plugins: [
+      vue(),
+      typescript({
+        clean: true,
+        check: false,
+      }),
+    ],
 
-  external: ['element-ui', 'vue', 'vue-property-decorator', 'lodash'],
+    external: ['element-ui', 'vue', 'vue-property-decorator', 'lodash'],
+  };
 };
+
+const input = {
+  cotton: path.resolve(__dirname, 'src/index.ts'),
+  Confirm: path.resolve(__dirname, 'src/Confirm.ts'),
+  ...collectComponents(),
+};
+
+module.exports = [
+  createBuildConfig(input, 'es', path.resolve(__dirname, 'lib/es')),
+  createBuildConfig(input, 'cjs', path.resolve(__dirname, 'lib/cjs')),
+];

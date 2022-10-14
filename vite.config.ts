@@ -6,8 +6,6 @@ export default defineConfig({
   plugins: [createVuePlugin(), splitVendorChunkPlugin()],
 
   test: {
-    root: '.',
     environment: 'jsdom',
-    include: ['./src/**/*.spec.ts'],
   },
 });
