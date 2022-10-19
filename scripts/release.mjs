@@ -4,6 +4,7 @@ import util from 'node:util';
 import { exec } from 'node:child_process';
 import semver from 'semver';
 import fse from 'fs-extra';
+import standardVersion from 'commit-and-tag-version';
 import pkg from '../package.json' assert { type: 'json' };
 
 const legacyStartVersion = '0.0.6';
@@ -75,6 +76,13 @@ const ask = async (versions) => {
 };
 
 const release = async () => {
+  try {
+    await standardVersion({});
+  } catch (err) {
+    console.error(err);
+    process.exit(1);
+  }
+
   const releasedVersions = await queryReleasedVersions();
   const tags = await queryReleaseTags();
   const unreleasedVersions = [];
