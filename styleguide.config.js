@@ -20,7 +20,10 @@ module.exports = {
           use: [
             {
               loader: 'ts-loader',
-              options: { appendTsSuffixTo: [/\.vue$/] },
+              options: {
+                appendTsSuffixTo: [/\.vue$/],
+                transpileOnly: true,
+              },
             },
           ],
         },
