@@ -18,8 +18,10 @@
     "test:coverage": "vitest --dir=./src run --coverage --config=vite.config.ts",
     "test": "vitest --dir=./src --run --config=vite.config.ts",
     "test:watch": "vitest --dir=./src -w --config=vite.config.ts",
+    "test:e2e": "npm run build && vitest --dir=./e2e --run --config=vite.config.ts",
     "build": "rollup -c",
     "prepare": "husky install",
+    "prepack": "npm run test:e2e",
     "release": "commit-and-tag-version",
     "styleguide": "vue-styleguidist server",
     "styleguide:build": "vue-styleguidist build"
