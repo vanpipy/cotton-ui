@@ -63,7 +63,7 @@ const ask = async (versions) => {
 
     if (answer.publish === true) {
       await build();
-      await publish();
+      await publish(answer.otp);
     }
   } else {
     console.log('The latest version has been released already');
