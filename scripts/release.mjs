@@ -34,7 +34,7 @@ const build = async () => {
 };
 
 const publish = async (otp) => {
-  const script = otp ? `npm publish --opt=${otp}` : 'npm publish';
+  const script = otp ? `npm publish --otp=${otp}` : 'npm publish';
   console.log(`Run ${script}`);
   await promisedExec(script);
   console.log('Done\n');
