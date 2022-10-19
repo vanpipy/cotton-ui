@@ -28,15 +28,16 @@ const build = async () => {
     await fse.rmdir(lib);
   }
 
+  console.log('Start to build');
   await promisedExec('npm run build');
+  console.log('Done\n');
 };
 
 const publish = async (otp) => {
-  if (otp) {
-    await promisedExec(`npm publish --opt ${otp}`);
-  } else {
-    await promisedExec('npm publish');
-  }
+  const script = otp ? `npm publish --opt=${otp}` : 'npm publish';
+  console.log(`Run ${script}`);
+  await promisedExec(script);
+  console.log('Done\n');
 };
 
 const ask = async (versions) => {
