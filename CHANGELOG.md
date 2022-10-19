@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [0.1.4](https://github.com/vanpipy/cotton-ui/compare/v0.1.2...v0.1.4) (2022-10-19)
+
+
+### Features
+
+* migrate to vue class component ([#2](https://github.com/vanpipy/cotton-ui/issues/2)) ([61c9da0](https://github.com/vanpipy/cotton-ui/commit/61c9da06e709b34ccc3edf3cbe0189596b44fbc6))
+
+
+### Bug Fixes
+
+* typo ([e25a16d](https://github.com/vanpipy/cotton-ui/commit/e25a16daa4bf3ae47267246a82c36a9593ea062f))
+* pass the OTP when publish ([c277c50](https://github.com/vanpipy/cotton-ui/commit/c277c501026df92eb30c4188a5e53bcd811b705d))
+* add the missing release script ([d531e13](https://github.com/vanpipy/cotton-ui/commit/d531e13e2e6773e9b31fb1f1f36144fecac41ee5))
+* remove useless code ([#6](https://github.com/vanpipy/cotton-ui/issues/6)) ([014bdc6](https://github.com/vanpipy/cotton-ui/commit/014bdc66a0e90963fc1c98ee1bbe2f3792c2dc39))
+* **github-workflow:** correct the runs-on ([#4](https://github.com/vanpipy/cotton-ui/issues/4)) ([9b0278e](https://github.com/vanpipy/cotton-ui/commit/9b0278e2e06ff7989615968ed4da9be6701e4add))
+* **github-workflows:** mv workflow to workflows ([e677c97](https://github.com/vanpipy/cotton-ui/commit/e677c97104323ec989a3fe3441dbb0daff07b3de))
+* **package.json:** remove auto-changelog ([330add6](https://github.com/vanpipy/cotton-ui/commit/330add69d7e66971acb7ded51bd5d489d83d637c))
+
 ### [0.1.3](https://github.com/vanpipy/cotton-ui/compare/v0.1.2...v0.1.3) (2022-10-13)
 
 
