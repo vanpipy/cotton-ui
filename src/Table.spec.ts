@@ -272,4 +272,27 @@ describe('Table', () => {
     await wait(10);
     expect(wrapper.html()).toContain('{"j":"$1","k":"$2","extra":"test word here"}');
   });
+
+  it('should convert the parameters passed into the request when the variant property exists', async () => {
+    const columns = [{ key: 'l', label: 'L' }];
+    const resource = vi.fn().mockImplementation(async () => {
+      return {
+        records: [{ l: '$1' }],
+        total: 1,
+      };
+    });
+    mount(Table, {
+      propsData: {
+        columns,
+        resource,
+        variant: {
+          current: 'a',
+          size: 'b',
+        },
+      },
+    });
+    await Vue.nextTick();
+    await wait(10);
+    expect(resource).toHaveBeenCalledWith({ a: 1, b: 10 });
+  });
 });
