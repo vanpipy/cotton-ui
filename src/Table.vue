@@ -28,7 +28,7 @@
 import { Table, TableColumn, Pagination } from 'element-ui';
 import { omit } from 'lodash';
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { justRetrunValue } from './utils';
+import { justRetrunValue, convertKeyAsValue } from './utils';
 
 const defaultQuery = {
   current: 1,
@@ -99,6 +99,17 @@ export default class CottonTable extends Vue {
    */
   @Prop({ type: Function }) readonly formatter!: (arg: Resp) => Promise<Resp> | Resp;
 
+  /**
+   * Convert the parameters pass into the resource
+   */
+  @Prop({
+    type: Object,
+    default() {
+      return {};
+    },
+  })
+  readonly variant!: AnyObject;
+
   localQuery: Partial<Page> & AnyObject = {};
   dataLoading = false;
   data: AnyObject[] = [];
@@ -138,7 +149,8 @@ export default class CottonTable extends Vue {
    */
   public async refresh(newQuery = {}, omited = []): Promise<void> {
     this.localQuery = omit({ ...this.localQuery, ...newQuery }, omited);
-    const { records = [], current = 1, total = 0 } = await this.request(this.localQuery);
+    const formattedQuery = convertKeyAsValue(this.localQuery, this.variant);
+    const { records = [], current = 1, total = 0 } = await this.request(formattedQuery);
     this.data = records;
     this.pagination = { ...this.pagination, current, total };
   }
