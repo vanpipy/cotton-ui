@@ -4,7 +4,11 @@ Table example:
 <template>
   <div>
     <div>
-      <Table :columns="columns" :resource="resource" />
+      <Table :columns="columns" :resource="resource">
+        <template v-slot:template="scope">
+          {{ ['I am a template', 'I am not a template too'][scope.row.template] }}
+        </template>
+      </Table>
     </div>
   </div>
 </template>
@@ -18,6 +22,7 @@ export default {
       columns: [
         { label: 'City', key: 'city' },
         { label: 'Postcode', key: 'postcode' },
+        { label: 'Template', key: 'template', template: true },
       ],
     }
   },
@@ -26,8 +31,8 @@ export default {
     resource: function() {
       return {
         records: [
-          { city: 'BeiJing', postcode: '100000' },
-          { city: 'ShangHai', postcode: '200000' },
+          { city: 'BeiJing', postcode: '100000', template: 0 },
+          { city: 'ShangHai', postcode: '200000', template: 1 },
         ]
       }
     }

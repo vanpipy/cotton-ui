@@ -247,4 +247,29 @@ describe('Table', () => {
     expect(tableBody.html()).toContain('$1');
     expect(tableBody.html()).toContain('$2');
   });
+
+  it('should create custom template when the column.template equals true', async () => {
+    const columns = [
+      { key: 'j', label: 'J', template: true },
+      { key: 'k', label: 'K' },
+    ];
+    const resource = vi.fn().mockImplementation(async () => {
+      return {
+        records: [{ j: '$1', k: '$2', extra: 'test word here' }],
+        total: 1,
+      };
+    });
+    const wrapper = mount(Table, {
+      propsData: {
+        columns,
+        resource,
+      },
+      scopedSlots: {
+        j: '<template slot-scope="scope">{{ JSON.stringify(scope.row) }}</template>',
+      },
+    });
+    await Vue.nextTick();
+    await wait(10);
+    expect(wrapper.html()).toContain('{"j":"$1","k":"$2","extra":"test word here"}');
+  });
 });

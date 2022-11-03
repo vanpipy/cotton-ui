@@ -4,7 +4,7 @@
       <ElementTableColumn v-for="column in columns" :key="column.key" v-bind="column">
         <template slot-scope="scope">
           <!-- @slot the `column.key` slot when the `column.template` equals true -->
-          <slot v-if="column.template" :name="column.key" :scope="scope" />
+          <slot v-if="column.template" :name="column.key" :row="scope.row" />
           <span v-if="!column.template">
             {{ column.type === 'index' ? scope.$index + 1 : null }}
             {{ column.type !== 'index' ? scope.row[column.key] : '' }}
