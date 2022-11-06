@@ -45,7 +45,6 @@ const createBuildConfig = (input, format = 'es', dir) => {
 
 const input = {
   cotton: path.resolve(__dirname, 'src/index.ts'),
-  Confirm: path.resolve(__dirname, 'src/Confirm.ts'),
   ...collectComponents(),
 };
 
