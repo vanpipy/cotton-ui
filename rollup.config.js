@@ -3,6 +3,9 @@ const path = require('path');
 const { filter } = require('lodash');
 const typescript = require('rollup-plugin-typescript2');
 const vue = require('rollup-plugin-vue');
+const postcss = require('rollup-plugin-postcss');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
 
 const SRC = 'src';
 
@@ -33,6 +36,10 @@ const createBuildConfig = (input, format = 'es', dir) => {
 
     plugins: [
       vue(),
+      postcss({
+        plugins: [autoprefixer(), cssnano()],
+        extract: 'cotton.css',
+      }),
       typescript({
         clean: true,
         check: false,
