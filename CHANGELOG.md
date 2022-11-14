@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [0.1.6](https://github.com/vanpipy/cotton-ui/compare/v0.1.2...v0.1.6) (2022-11-14)
+
+
+### Features
+
+* add now.json for vercel.com ([1a89873](https://github.com/vanpipy/cotton-ui/commit/1a89873148e1abe48c12d2279c2c81b7c28320f1))
+* migrate to vue class component ([#2](https://github.com/vanpipy/cotton-ui/issues/2)) ([61c9da0](https://github.com/vanpipy/cotton-ui/commit/61c9da06e709b34ccc3edf3cbe0189596b44fbc6))
+* **Table:** add variant property ([0c6e2e4](https://github.com/vanpipy/cotton-ui/commit/0c6e2e4c7d2346013bbf9655c55ea25e2c6018b2))
+
+
+### Bug Fixes
+
+* add the missing release script ([d531e13](https://github.com/vanpipy/cotton-ui/commit/d531e13e2e6773e9b31fb1f1f36144fecac41ee5))
+* disable type check when uses styleguide ([68774bb](https://github.com/vanpipy/cotton-ui/commit/68774bb2f5ee424fdd8394e605eacaebb5082b57))
+* **github-workflow:** correct the runs-on ([#4](https://github.com/vanpipy/cotton-ui/issues/4)) ([9b0278e](https://github.com/vanpipy/cotton-ui/commit/9b0278e2e06ff7989615968ed4da9be6701e4add))
+* **github-workflows:** mv workflow to workflows ([e677c97](https://github.com/vanpipy/cotton-ui/commit/e677c97104323ec989a3fe3441dbb0daff07b3de))
+* **package.json:** remove auto-changelog ([330add6](https://github.com/vanpipy/cotton-ui/commit/330add69d7e66971acb7ded51bd5d489d83d637c))
+* pass the OTP when publish ([c277c50](https://github.com/vanpipy/cotton-ui/commit/c277c501026df92eb30c4188a5e53bcd811b705d))
+* remove error file wait.ts and fix the vuls ([b3693cf](https://github.com/vanpipy/cotton-ui/commit/b3693cfeac3dba2c8533ecae708f8ff998922b15))
+* remove useless code ([#6](https://github.com/vanpipy/cotton-ui/issues/6)) ([014bdc6](https://github.com/vanpipy/cotton-ui/commit/014bdc66a0e90963fc1c98ee1bbe2f3792c2dc39))
+* **styleguide:** remove confirm.ts ([6714643](https://github.com/vanpipy/cotton-ui/commit/6714643693b717524073a822cbb0b584169d629d))
+* typo ([e25a16d](https://github.com/vanpipy/cotton-ui/commit/e25a16daa4bf3ae47267246a82c36a9593ea062f))
+* **vue-loader:** move 17 to 15 to avoid the styleguide error ([14eac3e](https://github.com/vanpipy/cotton-ui/commit/14eac3e5bd81cbf303448a2e1276d663bb85fc8d))
+
 ### [0.1.5](https://github.com/vanpipy/cotton-ui/compare/v0.1.2...v0.1.5) (2022-11-07)
 
 
