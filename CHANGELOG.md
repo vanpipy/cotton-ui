@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [0.1.7](https://github.com/vanpipy/cotton-ui/compare/v0.1.6...v0.1.7) (2022-11-18)
+
+
+### Bug Fixes
+
+* move rollup-plugin-vue to 5.1.8 ([15e1e3e](https://github.com/vanpipy/cotton-ui/commit/15e1e3e80b61a30e4e93e81e359f4a03dbcdbcf8))
+
 ### [0.1.6](https://github.com/vanpipy/cotton-ui/compare/v0.1.2...v0.1.6) (2022-11-14)
 
 
