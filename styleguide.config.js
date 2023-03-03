@@ -39,5 +39,5 @@ module.exports = {
 
   require: [path.resolve(__dirname, 'node_modules/element-ui/lib/theme-chalk/index.css')],
 
-  components: ['src/**/*.vue'],
+  components: ['src/*.vue'],
 };
