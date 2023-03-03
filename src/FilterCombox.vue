@@ -16,35 +16,7 @@
           class="filter-combox__form-item"
           style="width: 320px"
         >
-          <ElementInput
-            v-if="column.type === 'input'"
-            v-model.trim="values[column.key]"
-            :placeholder="column.placeholder || '请输入'"
-          />
-          <ElementSelect
-            v-if="column.type === 'select'"
-            v-model="values[column.key]"
-            :placeholder="column.placeholder || '请选择'"
-          >
-            <ElementOption
-              v-for="(option, index) in column.options"
-              :key="index"
-              :label="option.label"
-              :value="option.value"
-            />
-          </ElementSelect>
-          <DatePicker
-            v-if="column.type === 'date'"
-            v-model="values[column.key]"
-            :placeholder="column.placeholder || '请选择日期'"
-          />
-          <DatePicker
-            v-if="column.type === 'daterange'"
-            v-model="values[column.key]"
-            type="daterange"
-            :start-placeholder="column.placeholder || '开始日期'"
-            :end-placeholder="column.placeholder || '结束日期'"
-          />
+          <component :is="column.component" :data="column.data" v-model="values[column.key]" v-bind="column.config" />
         </FormItem>
         <div style="width: 320px; margin: 0, padding: 0" />
         <div style="width: 320px; margin: 0, padding: 0" />
@@ -60,27 +32,55 @@
 </template>
 
 <script lang="ts">
-import { Input, Select, Option, DatePicker, Form, FormItem } from 'element-ui';
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Input, DatePicker, Form, FormItem } from 'element-ui';
+import Select from './components/Select.vue';
+import DateRange from './components/DateRange.vue';
 
 export type Field = {
   label: string;
   key: string;
-  type: string;
-  placeholder?: string;
+  type: 'input' | 'select' | 'date' | 'daterange';
+  data?: unknown;
+  component?: Vue.Component;
+  config?: {
+    [key: string]: string | number | boolean;
+  };
 };
 
+const componentsMapping = {
+  input: Input,
+  select: Select,
+  date: DatePicker,
+  daterange: DateRange,
+};
+
+/**
+ * @displayName FilterCombox
+ */
 @Component({
   components: {
-    ElementInput: Input,
-    ElementSelect: Select,
-    ElementOption: Option,
-    DatePicker,
     ElementForm: Form,
     FormItem,
   },
 })
 export default class CottonFilter extends Vue {
+  _columns?: Array<Field>;
+  values: { [key: string]: unknown } = {};
+
+  /**
+   * The config describe the table columns -
+   * Array<{
+   *   label: string;
+   *   key: string;
+   *   type: 'input' | 'select' | 'date' | 'daterange';
+   *   data?: unknown;
+   *   component?: Vue.Component;
+   *   config?: {
+   *     [key: string]: string | number | boolean;
+   *   }
+   * }>
+   */
   @Prop({
     default() {
       return [];
@@ -88,14 +88,31 @@ export default class CottonFilter extends Vue {
   })
   readonly columns!: Array<Field>;
 
-  values = {};
-
-  getValues() {
+  /**
+   * Get the form values
+   *
+   * @public
+   */
+  public getValues() {
     return { ...this.values };
   }
 
-  reset() {
+  /**
+   * Reset the form values
+   *
+   * @public
+   */
+  public reset() {
     this.values = {};
+  }
+
+  created() {
+    if (this.columns && this.columns.length) {
+      this._columns = this.columns.map((column) => {
+        column.component = componentsMapping[column.type];
+        return column;
+      });
+    }
   }
 }
 </script>
