@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.2.0](https://github.com/vanpipy/cotton-ui/compare/v0.1.7...v0.2.0) (2023-03-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Filter:** the Filter has been dropped
+
+### Bug Fixes
+
+* add shims-vue.d.ts to avoid the import error ([ef51e0b](https://github.com/vanpipy/cotton-ui/commit/ef51e0ba6015699a30266a6f3268c4eded091ff8))
+* ts error in the Confirm.vue ([58bebd8](https://github.com/vanpipy/cotton-ui/commit/58bebd82f056083f14ed996ba99f25754ae56f79))
+
+
+* **Filter:** move Filter to FilterCombox ([159b8ce](https://github.com/vanpipy/cotton-ui/commit/159b8ce693569082fe504f99ac28d1df65d1345b))
+
 ### [0.1.7](https://github.com/vanpipy/cotton-ui/compare/v0.1.6...v0.1.7) (2022-11-18)
 
 
