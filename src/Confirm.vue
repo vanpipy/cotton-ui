@@ -36,13 +36,15 @@ export default class CottonConfirm extends Vue {
   @Prop() readonly onConfirm!: () => Promise<void> | void;
   @Prop() readonly onCancel!: () => Promise<void> | void;
 
+  visible = false;
+
   data() {
     return {
       visible: false,
     };
   }
 
-  private async onClickConfirm() {
+  public async onClickConfirm() {
     try {
       await this.onConfirm();
       this.hide();
@@ -51,7 +53,7 @@ export default class CottonConfirm extends Vue {
     }
   }
 
-  private async onClickCancel() {
+  public async onClickCancel() {
     try {
       await this.onCancel();
       this.hide();
