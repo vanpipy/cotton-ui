@@ -10,6 +10,15 @@ describe('E2E for the bundle result', () => {
     expect(CJSLoadableButton).not.toBeUndefined();
   });
 
+  it('should have a FilterCombox component', async () => {
+    const { FilterCombox } = await import('../');
+    const ESFilterCombox = await import('../lib/es/LoadableButton');
+    const CJSFilterCombox = await import('../lib/cjs/LoadableButton');
+    expect(FilterCombox).not.toBeUndefined();
+    expect(ESFilterCombox).not.toBeUndefined();
+    expect(CJSFilterCombox).not.toBeUndefined();
+  });
+
   it('should have a Table component', async () => {
     const { Table } = await import('../');
     const ESTable = await import('../lib/es/Table');
