@@ -24,6 +24,10 @@ const asyncNoop = async (args?: unknown) => {
  * @displayName LoadableButton
  */
 export default class LoadableButton extends Vue {
+  loading = false;
+  delay = 0;
+  timer: unknown;
+
   /**
    * The interval before the onClick triggered
    */
@@ -43,10 +47,6 @@ export default class LoadableButton extends Vue {
   })
   readonly onClick!: (args?: unknown) => Promise<unknown> | unknown;
 
-  loading = false;
-  delay = 0;
-  timer: unknown;
-
   mounted() {
     if (this.delayToTrigger > 0) {
       this.delay = this.delayToTrigger;
@@ -58,7 +58,7 @@ export default class LoadableButton extends Vue {
     clearTimeout(this.timer as number);
   }
 
-  private async onTriggerClick(...args: unknown[]) {
+  public async onTriggerClick(...args: unknown[]) {
     this.loading = true;
 
     await wait(this.interval);
