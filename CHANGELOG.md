@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [0.2.1](https://github.com/vanpipy/cotton-ui/compare/v0.2.0...v0.2.1) (2023-03-06)
+
+
+### Bug Fixes
+
+* **FilterCombox:** the error property for the dynamic component ([afa4a7e](https://github.com/vanpipy/cotton-ui/commit/afa4a7e356798b8a2536efde0e5a5deace52d5f2))
+
 ## [0.2.0](https://github.com/vanpipy/cotton-ui/compare/v0.1.7...v0.2.0) (2023-03-03)
 
 
