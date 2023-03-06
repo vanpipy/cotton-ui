@@ -78,6 +78,23 @@ describe('FilterCombox', () => {
     expect(wrapper.findAllComponents(Option)).toHaveLength(2);
   });
 
+  it('should render a multiple selector via the config.multiple equals true', () => {
+    const columns = [
+      {
+        label: 'A',
+        key: 'a',
+        type: 'select',
+        config: {
+          multiple: true,
+        },
+      },
+    ];
+    const wrapper = mount(FilterCombox, {
+      propsData: { columns },
+    });
+    expect(wrapper.findAll('.el-select__tags')).toHaveLength(1);
+  });
+
   it('should render a date picker element when the column.type equal `date`', () => {
     const columns = [{ label: 'A', key: 'a', type: 'date' }];
     const wrapper = mount(FilterCombox, {

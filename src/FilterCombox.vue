@@ -16,7 +16,12 @@
           class="filter-combox__form-item"
           style="width: 320px"
         >
-          <component :is="column.component" :data="column.data" v-model="values[column.key]" v-bind="column.config" />
+          <component
+            v-model="values[column.key]"
+            :is="column.component"
+            :data="column.data"
+            :config="column.config || {}"
+          />
         </FormItem>
         <div style="width: 320px; margin: 0, padding: 0" />
         <div style="width: 320px; margin: 0, padding: 0" />

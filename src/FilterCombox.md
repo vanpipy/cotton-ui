@@ -21,6 +21,13 @@ export default {
            type: 'select',
            data: [{ label: 'A', value: 'a' }, { label: 'B', value: 'b' }]
          },
+         {
+           label: 'Select',
+           key: 'multiple-select',
+           type: 'select',
+           data: [{ label: 'A', value: 'a' }, { label: 'B', value: 'b' }],
+           config: { multiple: true }
+         },
          { label: 'Date', key: 'date', type: 'date' },
          { label: 'DateRange', key: 'daterange', type: 'daterange' },
       ],
