@@ -10,6 +10,13 @@ Table example:
         </template>
       </Table>
     </div>
+    <div style="margin-top: 10px">
+      <Table border :columns="columns" :resource="resource">
+        <template v-slot:template="scope">
+          {{ ['I am a template', 'I am not a template too'][scope.row.template] }}
+        </template>
+      </Table>
+    </div>
   </div>
 </template>
 

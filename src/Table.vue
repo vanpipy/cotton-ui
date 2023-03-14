@@ -1,6 +1,6 @@
 <template>
   <div class="cotton-table">
-    <ElementTable class="cotton-table__instance" :data="data" style="width: 100%">
+    <ElementTable class="cotton-table__instance" v-bind="$attrs" :data="data" style="width: 100%">
       <ElementTableColumn v-for="column in columns" :key="column.key" v-bind="column">
         <template slot-scope="scope">
           <!-- @slot the `column.key` slot when the `column.template` equals true -->

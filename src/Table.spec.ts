@@ -295,4 +295,13 @@ describe('Table', () => {
     await wait(10);
     expect(resource).toHaveBeenCalledWith({ a: 1, b: 10 });
   });
+
+  it('should set the table has the broder style', () => {
+    const instance = mount(Table, {
+      propsData: {
+        border: true,
+      },
+    });
+    expect(instance.findAll('.el-table--border')).toHaveLength(1);
+  });
 });
