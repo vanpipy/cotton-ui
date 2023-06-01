@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.4.0](https://github.com/vanpipy/cotton-ui/compare/v0.3.0...v0.4.0) (2023-06-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgrade to vue@2.7.14
+
+### Features
+
+* upgrade vue from 2.6.14 to 2.7.14 ([3b6782f](https://github.com/vanpipy/cotton-ui/commit/3b6782fbf89de19eef7879630b4745caa0b50dac))
+
 ## [0.3.0](https://github.com/vanpipy/cotton-ui/compare/v0.1.7...v0.3.0) (2023-03-14)
 
 
