@@ -55,5 +55,19 @@ describe('Confirm', () => {
     instanceOne.open();
     instanceTwo.open();
     expect(document.querySelectorAll('.cotton-confirm')).toHaveLength(2);
+    instanceOne.destroy();
+    instanceTwo.destroy();
+  });
+
+  it('should render content function', () => {
+    instance = createConfirm({
+      title: 'C0',
+      content: (createElement) => {
+        return createElement('div', { class: 'test-div' }, 'Hello');
+      },
+    });
+    instance.open();
+    const confirmNode = document.querySelector('.cotton-confirm');
+    expect(document.body.innerHTML).toEqual('Hello');
   });
 });

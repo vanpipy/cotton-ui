@@ -1,11 +1,11 @@
-import Vue from 'vue';
+import Vue, { h, VNode } from 'vue';
 import ConfirmComponent from './Confirm.vue';
 
 const ConfirmConstructor = Vue.extend(ConfirmComponent);
 
 export type confirmProps = {
   title?: string;
-  content?: string;
+  content?: string | ((createElement: typeof h) => VNode);
   confirmButtonText?: string;
   cancelButtonText?: string;
   closeOnClickModal?: boolean;

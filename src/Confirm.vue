@@ -5,7 +5,7 @@
         {{ title }}
       </div>
       <div class="cotton-confirm__content">
-        {{ content }}
+        {{ renderContent() }}
       </div>
       <div class="cotton-confirm__operate">
         <LoadableButton :on-click="onClickCancel" class="cotton-confirm__cancel-button">
@@ -20,6 +20,7 @@
 </template>
 
 <script lang="ts">
+import { h, VNode } from 'vue';
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import LoadableButton from './LoadableButton.vue';
 
@@ -30,7 +31,7 @@ import LoadableButton from './LoadableButton.vue';
 })
 export default class CottonConfirm extends Vue {
   @Prop() readonly title!: string;
-  @Prop() readonly content!: string;
+  @Prop() readonly content!: string | ((createElement: typeof h) => VNode);
   @Prop({ default: '确定' }) readonly confirmButtonText!: string;
   @Prop({ default: '取消' }) readonly cancelButtonText!: string;
   @Prop() readonly onConfirm!: () => Promise<void> | void;
@@ -68,6 +69,14 @@ export default class CottonConfirm extends Vue {
 
   public hide() {
     this.visible = false;
+  }
+
+  renderContent() {
+    if (typeof this.content === 'function') {
+      const _content = this.content(h);
+      return _content;
+    }
+    return this.content;
   }
 }
 </script>
