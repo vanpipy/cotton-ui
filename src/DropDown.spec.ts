@@ -2,7 +2,7 @@ import Vue from 'vue';
 import { mount, Wrapper } from '@vue/test-utils';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { wait } from './utils';
-import DropDown from './DropDown.vue';
+import DropDown from './DropDown';
 
 describe('DropDown', () => {
   let wrapper: Wrapper<Vue, Element>;

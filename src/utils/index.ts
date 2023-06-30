@@ -9,7 +9,7 @@ export const justRetrunValue = async (input: unknown) => {
   return input;
 };
 
-export const convertKeyAsValue = (obj: Record<string, string>, mapping: Record<string, string>) => {
+export const convertKeyAsValue = (obj: Record<string, any>, mapping: Record<string, any>) => {
   const keys = Object.keys(mapping);
 
   if (keys.length) {

@@ -1,6 +1,6 @@
-import LoadableButton from './LoadableButton.vue';
-import FilterCombox from './FilterCombox.vue';
-import Table from './Table.vue';
+import LoadableButton from './LoadableButton';
+import FilterCombox from './FilterCombox';
+import Table from './Table';
 import { createConfirm } from './Confirm';
 import * as CONSTANS from './constant';
 

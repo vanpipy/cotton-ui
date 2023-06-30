@@ -1,8 +1,7 @@
 import { mount } from '@vue/test-utils';
-import { DatePicker, Input, Option } from 'element-ui';
-import FilterCombox from './FilterCombox.vue';
-import Select from './components/Select.vue';
 import { describe, it, expect } from 'vitest';
+import { DatePicker, Select, Input, Option } from 'element-ui';
+import FilterCombox from './FilterCombox';
 
 describe('FilterCombox', () => {
   it('should render the empty columns without exception', () => {

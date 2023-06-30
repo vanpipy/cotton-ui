@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 import { Pagination } from 'element-ui';
 import { describe, expect, it, vi } from 'vitest';
 import Vue from 'vue';
-import Table from './Table.vue';
+import Table from './Table';
 import { wait } from './utils';
 
 describe('Table', () => {
