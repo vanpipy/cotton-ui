@@ -22,9 +22,7 @@
     "build": "rollup -c",
     "prepare": "husky install",
     "prepack": "npm run test:e2e",
-    "release": "node scripts/release.mjs",
-    "styleguide": "vue-styleguidist server",
-    "styleguide:build": "vue-styleguidist build"
+    "release": "node scripts/release.mjs"
   },
   "repository": {
     "type": "git",
@@ -73,9 +71,7 @@
     "vitest": "^0.23.2",
     "vue-eslint-parser": "^9.1.0",
     "vue-loader": "^15.10.0",
-    "vue-styleguidist": "^4.54.1",
-    "vue-template-compiler": "2.7.14",
-    "webpack": "^5.74.0"
+    "vue-template-compiler": "2.7.14"
   },
   "dependencies": {
     "element-ui": "^2.15.7",
