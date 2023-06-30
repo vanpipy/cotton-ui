@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest';
-import LoadableButton from './LoadableButton.vue';
+import LoadableButton from './LoadableButton';
 
 describe('LoadableButton', () => {
   beforeEach(() => {
@@ -40,11 +40,11 @@ describe('LoadableButton', () => {
     });
     await wrapper.find('button').trigger('click');
     await vi.advanceTimersByTime(100);
-    expect(onClick).toHaveReturnedTimes(0);
+    expect(onClick).toHaveBeenCalledTimes(0);
     await vi.advanceTimersByTime(199);
-    expect(onClick).toHaveReturnedTimes(0);
+    expect(onClick).toHaveBeenCalledTimes(0);
     await vi.advanceTimersByTime(1);
-    expect(onClick).toHaveReturnedTimes(1);
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 
   it('should custom the inteval when trigger click', async () => {

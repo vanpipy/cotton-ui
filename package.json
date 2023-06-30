@@ -19,7 +19,7 @@
     "test": "vitest --dir=./src --run --config=vite.config.ts",
     "test:watch": "vitest --dir=./src -w --config=vite.config.ts",
     "test:e2e": "npm run build && vitest --dir=./e2e --run --config=vite.config.ts",
-    "build": "rollup -c",
+    "build": "vite build",
     "prepare": "husky install",
     "prepack": "npm run test:e2e",
     "release": "node scripts/release.mjs"
@@ -43,6 +43,7 @@
     "@types/lodash": "^4.14.185",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
+    "@vitejs/plugin-vue2-jsx": "^1.1.0",
     "@vitest/coverage-c8": "^0.23.2",
     "@vue/eslint-config-typescript": "^11.0.2",
     "@vue/test-utils": "^1.3.0",
@@ -60,18 +61,10 @@
     "jsdom": "^20.0.0",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
-    "rollup": "^2.79.1",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-typescript2": "^0.34.1",
-    "rollup-plugin-vue": "5.1.9",
     "semver": "^7.3.8",
-    "style-loader": "^3.3.1",
-    "ts-loader": "^9.4.1",
+    "vite": "^4.4.0",
     "vite-plugin-vue2": "^2.0.2",
-    "vitest": "^0.23.2",
-    "vue-eslint-parser": "^9.1.0",
-    "vue-loader": "^15.10.0",
-    "vue-template-compiler": "2.7.14"
+    "vitest": "^0.32.4"
   },
   "dependencies": {
     "element-ui": "^2.15.7",
