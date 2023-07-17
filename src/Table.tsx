@@ -14,10 +14,6 @@ const defaultPageValue = {
   layout: 'total, prev, pager, next, jumper',
 };
 
-type AnyObject = {
-  [key: string]: unknown;
-};
-
 type Page = {
   current: number;
   size: number;

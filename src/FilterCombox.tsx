@@ -1,6 +1,6 @@
 import { defineComponent, ref } from 'vue';
 import { Input, Select, Option, DatePicker, Form, FormItem } from 'element-ui';
-import { INPUT_TYPE, SELECT_TYPE, DATE_TYPE, DATERANGE_TYPE } from './constant';
+import { INPUT_TYPE, SELECT_TYPE, DATE_TYPE, DATERANGE_TYPE } from './utils/constant';
 
 enum Type {
   INPUT_TYPE,
